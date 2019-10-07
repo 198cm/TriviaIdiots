@@ -15,7 +15,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Button x:Name="InfoButton" Content="i&#xD;&#xA;" HorizontalAlignment="Left" Margin="22,22,0,0" VerticalAlignment="Top" Width="29" Height="29" FontWeight="Normal" Click="InfoButton_Click" FontSize="18"/>
-        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="738,22,0,0" VerticalAlignment="Top" Width="29" Height="29"/>
+        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="738,22,0,0" VerticalAlignment="Top" Width="29" Height="29" Click="SettingsButton_Click"/>
         <DataGrid x:Name="RoomsDataGrid" HorizontalAlignment="Left" Height="286" Margin="64,68,0,0" VerticalAlignment="Top" Width="263"/>
         <Button x:Name="JoinButton" Content="Join Room&#xD;&#xA;" HorizontalAlignment="Left" Height="40" Margin="379,267,0,0" VerticalAlignment="Top" Width="149" Click="JoinButton_Click" FontSize="24"/>
         <Button x:Name="CreateButton" Content="Create Room" HorizontalAlignment="Left" Height="40" Margin="582,267,0,0" VerticalAlignment="Top" Width="149" FontSize="22"/>

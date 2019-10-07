@@ -69,5 +69,12 @@ namespace TriviaIdiots
 
             return result;
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window2 sw = new Window2();
+            sw.Show();
+            this.Close();
+        }
     }
 }
