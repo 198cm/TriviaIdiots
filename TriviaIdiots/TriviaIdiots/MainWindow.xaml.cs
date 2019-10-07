@@ -24,5 +24,7 @@ namespace TriviaIdiots
         {
             InitializeComponent();
         }
+
+      
     }
 }
