@@ -10,7 +10,14 @@ namespace TI_Server
     {
         public static void Main(string[] args)
         {
-            new Server();
+
+            ApiRequest api = new ApiRequest();
+            QuestionPack qpack = api.getQuestions(5);
+
+            Console.WriteLine(qpack.ToString());
+
+
+            //new Server();
         }
 
         TcpListener listener;
