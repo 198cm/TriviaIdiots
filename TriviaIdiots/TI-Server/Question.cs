@@ -6,24 +6,17 @@ namespace TI_Server
 {
     class Question
     {
-        private string category { get; set; }
-        private string type { get; set; }
-        private Difficulty difficulty { get; set; }
-        private string question { get; set; }
-        private string correctAnswer { get; set; }
-        private string[] incorrectAnswers { get; set; }
+        public string category { get; set; }
+        public string type { get; set; }
+        public string difficulty { get; set; }
+        public string question { get; set; }
+        public string correct_answer { get; set; }
+        public string[] incorrect_answers { get; set; }
 
         public override string ToString()
         {
             return base.ToString();
         }
     }
-
-
-
-
-    public enum Difficulty
-    {
-        Easy, Medium, Hard
-    }
+ 
 }

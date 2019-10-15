@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TI_Server
 {
     class Server
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
 
             ApiRequest api = new ApiRequest();
-            QuestionPack qpack = api.getQuestions(5);
+            QuestionPack qpack = await api.getQuestionsAsync(5);
 
             Console.WriteLine(qpack.ToString());
 
+            
 
             //new Server();
         }

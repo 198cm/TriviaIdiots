@@ -22,14 +22,6 @@ namespace TI_Server
             }
         }
 
-        public QuestionPack(int response_code, Question[] results)
-        {
-            foreach(Question q in results)
-            {
-                questions.Add(q);
-            }
-        }
-
         public void addQuestion(Question question)
         {
             this.questions.Add(question);
