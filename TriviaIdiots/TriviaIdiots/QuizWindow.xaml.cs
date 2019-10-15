@@ -19,9 +19,57 @@ namespace TriviaIdiots
     /// </summary>
     public partial class Window1 : Window
     {
+        private string VraagContent { get; set; } = "Nog vraag!";
+        private string AnswerLeftUp { get; set; } = "-";
+        private string AnswerLeftDown { get; set; } = "-";
+        private string AnswerRightUp { get; set; } = "-";
+        private string AnswerRightDown { get; set; } = "-";
+
+
         public Window1()
         {
             InitializeComponent();
+            QuestionContentUpdate();
+
+        }
+
+        public void ChangeAnswerContent(AnswerSpot spot, string text)
+        {
+            switch (spot)
+            {
+                case AnswerSpot.LEFTDOWN:
+                    AnswerLeftDown = text;
+                    break;
+                case AnswerSpot.LEFTUP:
+                    AnswerLeftUp = text;
+                    break;
+                case AnswerSpot.RIGHTDOWN:
+                    AnswerRightDown = text;
+                    break;
+                case AnswerSpot.RIGHTUP:
+                    AnswerRightUp = text;
+                    break;
+            }
+
+        }
+
+        public void ChangeAnswerContent(string LeftDown, string LeftUp, string RightDown, string RightUp)
+        {
+            AnswerLeftDown = LeftDown;
+            AnswerLeftUp = LeftUp;
+            AnswerRightUp = RightUp;
+            AnswerRightDown = RightDown;
+        }
+
+
+
+        private void QuestionContentUpdate()
+        {
+            VraagLabel.Content = VraagContent;
+            AnswerButtonLeftUp.Content = AnswerLeftUp;
+            AnswerButtonLeftDown.Content = AnswerLeftDown;
+            AnswerButtonRightUp.Content = AnswerRightUp;
+            AnswerButtonRightDown.Content = AnswerRightDown;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,6 +85,11 @@ namespace TriviaIdiots
         private void LeaveButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public enum AnswerSpot
+        {
+            RIGHTUP, RIGHTDOWN, LEFTUP, LEFTDOWN
         }
     }
 }

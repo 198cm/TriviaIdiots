@@ -22,7 +22,7 @@ namespace TriviaIdiots
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool open = true;
+        
         public MainWindow()
         {
             InitializeComponent();
