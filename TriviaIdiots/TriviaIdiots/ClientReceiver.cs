@@ -40,9 +40,9 @@ namespace TI_Server.Communication
                     cr.AnswerRightUp = data[6];
                     Window1.quizw.VraagContent = data[2];
                     Window1.quizw.AnswerLeftDown = data[3];
-                    Window1.quizw.AnswerLeftUp = data[3];
-                    Window1.quizw.AnswerRightDown = data[3];
-                    Window1.quizw.AnswerRightUp = data[3];
+                    Window1.quizw.AnswerLeftUp = data[4];
+                    Window1.quizw.AnswerRightDown = data[5];
+                    Window1.quizw.AnswerRightUp = data[6];
 
                     break;
                 case "PlayerJoin":
