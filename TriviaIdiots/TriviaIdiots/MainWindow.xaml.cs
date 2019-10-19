@@ -26,6 +26,7 @@ namespace TriviaIdiots
         public MainWindow()
         {
             InitializeComponent();
+            Client client = new Client();
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
