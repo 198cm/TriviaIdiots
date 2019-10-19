@@ -20,10 +20,10 @@ namespace TI_Server.Communication
 {
     class ClientReceiver : IReceiver
     {
-        private ClientRoom cr;
-        public ClientReceiver(ClientRoom cr)
+        
+        public ClientReceiver()
         {
-            this.cr = cr;
+            
         }
         public void handlePackage(string message)
         {
@@ -32,12 +32,6 @@ namespace TI_Server.Communication
             switch (data[0])
             {
                 case "Question":
-                    cr.VraagCat = data[1];
-                    cr.VraagContent = data[2];
-                    cr.AnswerLeftDown = data[3];
-                    cr.AnswerLeftUp = data[4];
-                    cr.AnswerRightDown = data[5];
-                    cr.AnswerRightUp = data[6];
                     Window1.quizw.VraagContent = data[2];
                     Window1.quizw.AnswerLeftDown = data[3];
                     Window1.quizw.AnswerLeftUp = data[4];
@@ -46,17 +40,17 @@ namespace TI_Server.Communication
 
                     break;
                 case "PlayerJoin":
-                    cr.playerNames.Add((string) data[1]);
+                    //cr.playerNames.Add((string) data[1]);
                     break;
                 case "PlayerLeave":
-                    cr.playerNames.Remove((string) data[1]);
+                    //cr.playerNames.Remove((string) data[1]);
 
                     break;
                 case "AnswerCheck":
 
                     break;
                 case "Roomcode":
-                    cr.roomcode = (string)data[1];
+                    //cr.roomcode = (string)data[1];
                     break;
                 case "Start":
                     WaitRoom.waitr.readyGame();

@@ -38,7 +38,7 @@ namespace TI_Server.Communication
                     cr.roomcode = (string)data[1];
                     break;
                 case "Start":
-                    ReadyGame();
+                    //ReadyGame();
                     break;
             }
         }
