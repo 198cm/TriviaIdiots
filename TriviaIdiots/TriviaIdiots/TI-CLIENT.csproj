@@ -58,12 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientReceiver.cs" />
+    <Compile Include="ClientRoom.cs" />
     <Compile Include="CreditWindow.xaml.cs">
       <DependentUpon>CreditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="InfoWindow.xaml.cs">
       <DependentUpon>InfoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IReceiver.cs" />
     <Compile Include="JoinWindow.xaml.cs">
       <DependentUpon>JoinWindow.xaml</DependentUpon>
     </Compile>

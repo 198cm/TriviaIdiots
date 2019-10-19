@@ -19,6 +19,7 @@ namespace TriviaIdiots
     /// </summary>
     public partial class JoinWindow : Window
     {
+        bool joined = true;
         public JoinWindow()
         {
             InitializeComponent();
@@ -38,9 +39,13 @@ namespace TriviaIdiots
 
         private void JoinButton_Click(object sender, RoutedEventArgs e)
         {
-            WaitRoom wr = new WaitRoom();
-            wr.Show();
-            this.Close();
+
+            if (joined)
+            {
+                WaitRoom wr = new WaitRoom();
+                wr.Show();
+                this.Close();
+            }
         }
     }
 }
