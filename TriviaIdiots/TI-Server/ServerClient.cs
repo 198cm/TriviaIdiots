@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
+using TI_Server.Players;
 
 namespace TI_Server
 {
@@ -9,6 +10,7 @@ namespace TI_Server
     {
         private TcpClient tcpClient;
         private NetworkStream stream;
+        public Player player;
 
         private byte[] buffer = new byte[1024];
         string totalBuffer = "";

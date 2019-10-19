@@ -17,6 +17,11 @@ namespace TI_Server
         {
             return base.ToString();
         }
+
+        public bool IsGivenAnswerCorrect(string givenAnswer)
+        {
+            return correct_answer == givenAnswer;
+        }
     }
  
 }
