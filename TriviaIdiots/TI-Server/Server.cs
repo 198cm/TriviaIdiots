@@ -9,17 +9,9 @@ namespace TI_Server
 {
     class Server
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-
-            ApiRequest api = new ApiRequest();
-            QuestionPack qpack = await api.getQuestionsAsync(5);
-
-            Console.WriteLine(qpack.ToString());
-
-            
-
-            //new Server();
+            new Server();
         }
 
         TcpListener listener;

@@ -23,6 +23,7 @@ namespace TriviaIdiots
         public MainWindow()
         {
             InitializeComponent();
+            Client client = new Client();
         }
 
       
