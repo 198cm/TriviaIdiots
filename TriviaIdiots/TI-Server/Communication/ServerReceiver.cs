@@ -32,6 +32,7 @@ namespace TI_Server.Communication
 
                     ApiRequest request = new ApiRequest();
                     Question q1 = await request.getQuestion();
+                    this.Server.AddQuestion(q1);
 
                     ServerRoom roomA = getRoom(room1);
                     foreach (Player player in roomA.players)
@@ -64,16 +65,23 @@ namespace TI_Server.Communication
 
                     ApiRequest request1 = new ApiRequest();
                     Question q2 = await request1.getQuestion();
+                    this.Server.AddQuestion(q2);
 
                     this.client.player.sendQuestion(q2);
 
                     break;
                 case "Answer":
-                    string player1 = data[1];
-                    string question = data[2];
-                    string givenAnswer = data[3];
+                    string question = data[1];
+                    string givenAnswer = data[2];
 
-
+                    Question q3 = GetQuestion(question);
+                    if (q3.IsGivenAnswerCorrect(givenAnswer))
+                    {
+                        this.client.Write("Answer``True~_~");
+                    } else
+                    {
+                        this.client.Write("Answer``False~_~");
+                    }
 
                     break;
             }
@@ -85,6 +93,15 @@ namespace TI_Server.Communication
             {
                 return this.Server.GetRoom(roomName);
                 
+            }
+            return null;
+        }
+
+        public Question GetQuestion(string question)
+        {
+            if (this.Server.QuestionExists(question))
+            {
+                return this.Server.GetQuestion(question);
             }
             return null;
         }

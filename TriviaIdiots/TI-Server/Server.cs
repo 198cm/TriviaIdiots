@@ -92,5 +92,34 @@ namespace TI_Server
             }
             return null;
         }
+
+        public void AddQuestion(Question q1)
+        {
+            this.questions.Add(q1);
+        }
+
+        public bool QuestionExists(string question)
+        {
+            foreach(Question q1 in questions)
+            {
+                if(q1.question == question)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public Question GetQuestion(string question)
+        {
+            foreach(Question q1 in questions)
+            {
+                if (q1.question == question)
+                {
+                    return q1;
+                }
+            }
+            return null;
+        }
     }
 }
