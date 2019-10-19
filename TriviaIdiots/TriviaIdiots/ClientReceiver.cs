@@ -20,8 +20,10 @@ namespace TI_Server.Communication
 {
     class ClientReceiver : IReceiver
     {
+        
         public ClientReceiver()
         {
+            
         }
         public void handlePackage(string message)
         {
@@ -38,13 +40,17 @@ namespace TI_Server.Communication
 
                     break;
                 case "PlayerJoin":
+                    //cr.playerNames.Add((string) data[1]);
                     break;
                 case "PlayerLeave":
+                    //cr.playerNames.Remove((string) data[1]);
 
                     break;
                 case "AnswerCheck":
+
                     break;
                 case "Roomcode":
+                    //cr.roomcode = (string)data[1];
                     break;
                 case "Start":
                     WaitRoom.waitr.readyGame();
