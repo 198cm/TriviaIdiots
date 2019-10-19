@@ -15,31 +15,26 @@ using System.Windows.Shapes;
 namespace TriviaIdiots
 {
     /// <summary>
-    /// Interaction logic for Window2.xaml
+    /// Interaction logic for WaitRoom.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class WaitRoom : Window
     {
-        public Window2()
+        public WaitRoom()
         {
             InitializeComponent();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LeaveButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Close();
         }
 
-        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        private void ReadyButton_Click(object sender, RoutedEventArgs e)
         {
-            InfoWindow iw = new InfoWindow();
-            iw.Show();
+            Window1 qw = new Window1();
+            qw.Show();
             this.Close();
         }
     }

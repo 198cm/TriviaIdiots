@@ -35,7 +35,9 @@ namespace TriviaIdiots
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            InfoWindow iw = new InfoWindow();
+            iw.Show();
+            this.Close();
         }
 
         private void JoinButton_Click(object sender, RoutedEventArgs e)
