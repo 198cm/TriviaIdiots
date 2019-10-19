@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TI_Server;
 
 namespace TriviaIdiots
 {
@@ -21,6 +22,7 @@ namespace TriviaIdiots
     {
         public WaitRoom()
         {
+            ClientRoom cr = new ClientRoom();
             InitializeComponent();
         }
 
@@ -32,6 +34,13 @@ namespace TriviaIdiots
         }
 
         private void ReadyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 qw = new Window1();
+            qw.Show();
+            this.Close();
+        }
+
+        public void readyGame()
         {
             Window1 qw = new Window1();
             qw.Show();

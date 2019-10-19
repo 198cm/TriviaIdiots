@@ -1,9 +1,20 @@
 ﻿using System;
+
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Text.RegularExpressions;
-using TI_Server.Players;
 using TI_Server;
+using TriviaIdiots;
 
 namespace TI_Server.Communication
 {
@@ -21,6 +32,7 @@ namespace TI_Server.Communication
             switch (data[0])
             {
                 case "Question":
+                   TriviaIdiots.Window1.AnswerSpot answer
 
                     break;
                 case "PlayerJoin":
@@ -37,7 +49,8 @@ namespace TI_Server.Communication
                     cr.roomcode = (string)data[1];
                     break;
                 case "Start":
-                    ReadyGame();
+                    var qw = new Window2();
+                    qw.Show();
                     break;
             }
         }

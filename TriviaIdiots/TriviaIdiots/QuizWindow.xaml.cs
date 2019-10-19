@@ -19,11 +19,11 @@ namespace TriviaIdiots
     /// </summary>
     public partial class Window1 : Window
     {
-        private string VraagContent { get; set; } = "Nog vraag!";
-        private string AnswerLeftUp { get; set; } = "-";
-        private string AnswerLeftDown { get; set; } = "-";
-        private string AnswerRightUp { get; set; } = "-";
-        private string AnswerRightDown { get; set; } = "-";
+        public string VraagContent { get; set; } = "Nog vraag!";
+        public string AnswerLeftUp { get; set; } = "-";
+        public string AnswerLeftDown { get; set; } = "-";
+        public string AnswerRightUp { get; set; } = "-";
+        public string AnswerRightDown { get; set; } = "-";
 
 
         public Window1()
