@@ -19,16 +19,18 @@ namespace TriviaIdiots
     /// </summary>
     public partial class Window1 : Window
     {
-        public string VraagContent { get; set; } = "Nog vraag!";
-        public string AnswerLeftUp { get; set; } = "-";
-        public string AnswerLeftDown { get; set; } = "-";
-        public string AnswerRightUp { get; set; } = "-";
-        public string AnswerRightDown { get; set; } = "-";
+        internal string VraagContent { get; set; } = "Nog vraag!";
+        internal string AnswerLeftUp { get; set; } = "-";
+        internal string AnswerLeftDown { get; set; } = "-";
+        internal string AnswerRightUp { get; set; } = "-";
+        internal string AnswerRightDown { get; set; } = "-";
+        internal static Window1 quizw;
 
 
         public Window1()
         {
             InitializeComponent();
+            quizw = this;
             QuestionContentUpdate();
 
         }

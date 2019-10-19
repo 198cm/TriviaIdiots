@@ -32,7 +32,17 @@ namespace TI_Server.Communication
             switch (data[0])
             {
                 case "Question":
-                   TriviaIdiots.Window1.AnswerSpot answer
+                    cr.VraagCat = data[1];
+                    cr.VraagContent = data[2];
+                    cr.AnswerLeftDown = data[3];
+                    cr.AnswerLeftUp = data[4];
+                    cr.AnswerRightDown = data[5];
+                    cr.AnswerRightUp = data[6];
+                    Window1.quizw.VraagContent = data[2];
+                    Window1.quizw.AnswerLeftDown = data[3];
+                    Window1.quizw.AnswerLeftUp = data[3];
+                    Window1.quizw.AnswerRightDown = data[3];
+                    Window1.quizw.AnswerRightUp = data[3];
 
                     break;
                 case "PlayerJoin":
@@ -49,8 +59,7 @@ namespace TI_Server.Communication
                     cr.roomcode = (string)data[1];
                     break;
                 case "Start":
-                    var qw = new Window2();
-                    qw.Show();
+                    WaitRoom.waitr.readyGame();
                     break;
             }
         }

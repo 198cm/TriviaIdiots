@@ -14,6 +14,7 @@ namespace TI_Server
         public string AnswerLeftDown { get; set; } = "-";
         public string AnswerRightUp { get; set; } = "-";
         public string AnswerRightDown { get; set; } = "-";
+        public string VraagCat { get; set; } = "";
 
         public ClientRoom()
         {

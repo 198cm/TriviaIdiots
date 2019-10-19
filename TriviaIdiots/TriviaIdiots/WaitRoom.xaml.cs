@@ -20,10 +20,12 @@ namespace TriviaIdiots
     /// </summary>
     public partial class WaitRoom : Window
     {
+        internal static WaitRoom waitr;
         public WaitRoom()
         {
             ClientRoom cr = new ClientRoom();
             InitializeComponent();
+            waitr = this;
         }
 
         private void LeaveButton_Click(object sender, RoutedEventArgs e)
