@@ -97,5 +97,10 @@ namespace TriviaIdiots
             this.Close();
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            client.SendConnect(UsernameTextBox.Text);
+        }
     }
 }

@@ -51,7 +51,7 @@ namespace TI_Server.Communication
 
                     break;
                 case "Roomcode":
-                    WaitRoom.roomcode = data[1];
+                    WaitRoom.waitr.roomcode = data[1];
                     break;
                 case "Start":
                     WaitRoom.waitr.readyGame();

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using TI_Server;
 
 namespace TriviaIdiots
@@ -21,7 +22,7 @@ namespace TriviaIdiots
     public partial class WaitRoom : Window
     {
         internal static WaitRoom waitr;
-        internal static string roomcode;
+        internal string roomcode;
         public Client client;
         public WaitRoom(Client client)
         {
@@ -29,7 +30,19 @@ namespace TriviaIdiots
             ClientRoom cr = new ClientRoom();
             InitializeComponent();
             waitr = this;
+
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+
+            
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
             RoomCodeLabel.Content = roomcode;
+            CommandManager.InvalidateRequerySuggested();
         }
 
         private void LeaveButton_Click(object sender, RoutedEventArgs e)
@@ -41,9 +54,7 @@ namespace TriviaIdiots
 
         private void ReadyButton_Click(object sender, RoutedEventArgs e)
         {
-            Window1 qw = new Window1(client);
-            qw.Show();
-            this.Close();
+            readyGame();
         }
 
         public void readyGame()
@@ -53,5 +64,6 @@ namespace TriviaIdiots
             client.SendRoomStart(roomcode);
             this.Close();
         }
+
     }
 }

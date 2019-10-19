@@ -26,6 +26,7 @@ namespace TI_Server.Communication
                 case "Connect":
                     string name = data[1];
                     client.player = new Player(this.client, name);
+                    this.Server.addPlayer(client.player);
                     break;
                 case "QuestionRequest":
                     string room1 = data[1];
