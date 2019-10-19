@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TI_Server.Players;
 
 namespace TI_Server
 {
     class Server
     {
+        List<Player> players = new List<Player>();
+        ConcurrentBag<Question> questions = new ConcurrentBag<Question>();
+
         public static void Main(string[] args)
         {
             new Server();
@@ -34,6 +39,9 @@ namespace TI_Server
             listener.BeginAcceptTcpClient(new AsyncCallback(OnConnect), null);
         }
 
-
+        public void addPlayer(Player player)
+        {
+            this.players.Add(player);
+        }
     }
 }
