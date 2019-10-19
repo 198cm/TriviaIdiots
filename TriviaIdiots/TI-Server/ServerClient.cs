@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
+using TI_Server.Communication;
 using TI_Server.Players;
 
 namespace TI_Server
@@ -10,14 +11,18 @@ namespace TI_Server
     {
         private TcpClient tcpClient;
         private NetworkStream stream;
+        private Server server;
         public Player player;
+        private ServerReceiver receiver;
 
         private byte[] buffer = new byte[1024];
         string totalBuffer = "";
 
-        public ServerClient(TcpClient newTcpClient)
+        public ServerClient(TcpClient newTcpClient, Server server)
         {
             this.tcpClient = newTcpClient;
+            this.server = server;
+            this.receiver = new ServerReceiver(server, this);
 
             this.stream = tcpClient.GetStream();
             stream.BeginRead(buffer, 0, buffer.Length, new AsyncCallback(OnRead), null);
@@ -29,15 +34,43 @@ namespace TI_Server
             int receivedBytes = stream.EndRead(ar);
             totalBuffer += Encoding.ASCII.GetString(buffer, 0, receivedBytes);
 
-            Console.WriteLine($"Received Data From Client: {totalBuffer}");
-            //implement protocol
-            handlePackage();
+            while (totalBuffer.Contains("~_~"))
+            {
+                string packet = totalBuffer.Substring(0, totalBuffer.IndexOf("~_~"));
+                totalBuffer = totalBuffer.Substring(totalBuffer.IndexOf("~_~") + 3);
+
+                this.receiver.handlePackage(packet);
+            }
 
             stream.BeginRead(buffer, 0, buffer.Length, new AsyncCallback(OnRead), null);
         }
 
-        private void handlePackage()
+        public void Write(string message)
         {
+            stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
+            stream.Flush();
+        }
+
+        public void ReceiverPlayer(Player player)
+        {
+            this.player = player;
+        }
+
+        public void CreateRoom()
+        {
+            string possibleRoomCode = GameHelpCommands.RoomCodeGenerate();
+            bool codeIsPossible = false;
+            while (!codeIsPossible)
+            {
+                if (this.server.RoomExists(possibleRoomCode))
+                {
+                    possibleRoomCode = GameHelpCommands.RoomCodeGenerate();
+                }
+                codeIsPossible = true;
+            }
+            ServerRoom room = new ServerRoom(possibleRoomCode);
+            this.server.addRoom(room);
+            room.AddPlayer(this.player);
         }
     }
 }

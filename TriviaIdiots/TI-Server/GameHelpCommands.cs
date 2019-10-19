@@ -7,7 +7,7 @@ namespace TI_Server
     class GameHelpCommands
     {
 
-        public string RoomCodeGenerate()
+        public static string RoomCodeGenerate()
         {
             StringBuilder Sbuilder = new StringBuilder();
             Random r = new Random();

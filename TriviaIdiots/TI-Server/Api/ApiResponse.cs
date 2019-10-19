@@ -13,5 +13,10 @@ namespace TI_Server
         {
             return new QuestionPack(results);
         }
+
+        public Question GetQuestion()
+        {
+            return results[0];
+        }
     }
 }

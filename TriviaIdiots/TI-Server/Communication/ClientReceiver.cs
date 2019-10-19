@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TI_Server.Communication
 {
@@ -11,6 +12,11 @@ namespace TI_Server.Communication
 
         }
         public void handlePackage(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IReceiver.handlePackage(string message)
         {
             throw new NotImplementedException();
         }

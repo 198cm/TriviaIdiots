@@ -11,14 +11,16 @@ namespace TI_Server
 {
     class Server
     {
-        List<Player> players = new List<Player>();
-        ConcurrentBag<Question> questions = new ConcurrentBag<Question>();
+        
 
         public static void Main(string[] args)
         {
             new Server();
         }
 
+        ConcurrentBag<Player> players = new ConcurrentBag<Player>();
+        ConcurrentBag<Question> questions = new ConcurrentBag<Question>();
+        ConcurrentBag<ServerRoom> rooms = new ConcurrentBag<ServerRoom>();
         TcpListener listener;
         private List<ServerClient> clients = new List<ServerClient>();
 
@@ -34,14 +36,61 @@ namespace TI_Server
         {
             var newTcpClient = listener.EndAcceptTcpClient(ar);
             Console.WriteLine("New client connected");
-            clients.Add(new ServerClient(newTcpClient));
-
+            clients.Add(new ServerClient(newTcpClient, this));
+            
             listener.BeginAcceptTcpClient(new AsyncCallback(OnConnect), null);
         }
 
         public void addPlayer(Player player)
         {
             this.players.Add(player);
+        }
+
+        public void addRoom(ServerRoom room)
+        {
+            this.rooms.Add(room);
+        }
+
+        public void sendRoomNamesToClients()
+        {
+            string message = "Rooms``";
+            foreach(ServerRoom room in rooms)
+            {
+                message += room.roomName + "``";
+            }
+            message += "~_~";
+            Broadcast(message);
+        }
+
+        public void Broadcast(string message)
+        {
+            foreach(ServerClient client in clients)
+            {
+                client.Write(message);
+            }
+        }
+
+        public bool RoomExists(string roomName)
+        {
+            foreach(ServerRoom room in rooms)
+            {
+                if(room.roomName == roomName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public ServerRoom GetRoom(string roomName)
+        {
+            foreach(ServerRoom room in rooms)
+            {
+                if (room.roomName == roomName)
+                {
+                    return room;
+                }
+            }
+            return null;
         }
     }
 }

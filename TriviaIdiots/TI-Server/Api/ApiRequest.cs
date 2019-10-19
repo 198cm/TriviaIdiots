@@ -27,5 +27,12 @@ namespace TI_Server
             return apiResponse.GetQuestionPack();
         }
 
+        public async Task<Question> getQuestion()
+        {
+            var response = await client.GetStringAsync("https://opentdb.com/api.php?amount=1&type=multiple");
+            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(response);
+            return apiResponse.GetQuestion();
+        }
+
     }
 }
