@@ -58,6 +58,7 @@ namespace TriviaIdiots
             started = true;
             Application.Current.Dispatcher.Invoke((Action)delegate {
                 Window1 qw = new Window1(client);
+                qw.roomcode = this.roomcode;
                 qw.Show();
                 client.SendRoomStart(roomcode);
                 this.Close();

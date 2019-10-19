@@ -20,7 +20,7 @@ namespace TriviaIdiots
         {
             TcpClient client = new TcpClient();
             client.Connect("localhost", 1017);
-            receiver = new ClientReceiver();
+            receiver = new ClientReceiver(this);
             stream = client.GetStream();
 
             stream.BeginRead(buffer, 0, buffer.Length, new AsyncCallback(OnRead), null);

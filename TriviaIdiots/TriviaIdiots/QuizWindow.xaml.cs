@@ -25,6 +25,11 @@ namespace TriviaIdiots
         internal string AnswerLeftDown { get; set; } = "-";
         internal string AnswerRightUp { get; set; } = "-";
         internal string AnswerRightDown { get; set; } = "-";
+
+        public int score = 0;
+
+        public string roomcode = "";
+
         internal static Window1 quizw;
         public Client client;
 
@@ -36,7 +41,7 @@ namespace TriviaIdiots
             quizw = this;
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0,0,1);
             dispatcherTimer.Start();
 
         }
@@ -85,31 +90,55 @@ namespace TriviaIdiots
 
         private void QuestionContentUpdate()
         {
-            VraagLabel.Content = VraagContent;
+            VraagLabel.Text = VraagContent;
             AnswerButtonLeftUp.Content = AnswerLeftUp;
             AnswerButtonLeftDown.Content = AnswerLeftDown;
             AnswerButtonRightUp.Content = AnswerRightUp;
             AnswerButtonRightDown.Content = AnswerRightDown;
+            ScoreLabel.Content = $"Score: {score}";
+            RoomCodeLabel.Content = $"Roomcode:\n{roomcode}";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            checkAnswer(AnswerLeftDown, VraagContent);
         }
 
         private void LeaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
         }
 
         public enum AnswerSpot
         {
             RIGHTUP, RIGHTDOWN, LEFTUP, LEFTDOWN
+        }
+
+        private void LeftTopButton_Click(object sender, RoutedEventArgs e)
+        {
+            checkAnswer(AnswerLeftUp, VraagContent);
+        }
+
+        private void checkAnswer(string answer, string question)
+        {
+            client.SendAnswer(question, answer);
+        }
+
+        private void AnswerButtonRightUp_Click(object sender, RoutedEventArgs e)
+        {
+            checkAnswer(AnswerRightUp, VraagContent);
+        }
+
+        private void AnswerButtonRightDown_Click(object sender, RoutedEventArgs e)
+        {
+            checkAnswer(AnswerRightDown, VraagContent);
         }
     }
 }

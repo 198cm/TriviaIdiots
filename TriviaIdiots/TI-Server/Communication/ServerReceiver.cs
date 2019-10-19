@@ -49,7 +49,7 @@ namespace TI_Server.Communication
                         ServerRoom roomConnect = this.Server.GetRoom(room2);
                         roomConnect.AddPlayer(this.client.player);
                     }
-
+                    this.client.Write("ConnectionSuccesfull~_~");
                     break;
                 case "RoomShow":
                     Server.sendRoomNamesToClients();

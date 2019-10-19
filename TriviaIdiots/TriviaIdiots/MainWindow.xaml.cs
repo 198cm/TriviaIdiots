@@ -23,6 +23,7 @@ namespace TriviaIdiots
     public partial class MainWindow : Window
     {
         public Client client;
+        public bool nameSet = false;
 
         public MainWindow()
         {
@@ -44,9 +45,17 @@ namespace TriviaIdiots
 
         private void JoinButton_Click(object sender, RoutedEventArgs e)
         {
-            JoinWindow jw = new JoinWindow(client);
-            jw.Show();
-            this.Close();
+            if (nameSet == true)
+            {
+                JoinWindow jw = new JoinWindow(client);
+                jw.Show();
+                this.Close();
+            }
+            else
+            {
+                UsernameTextBox.Text = "Set Name First";
+            }
+            
         }
 
         private void LogoLabel_Loaded(object sender, RoutedEventArgs e)
@@ -91,15 +100,21 @@ namespace TriviaIdiots
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            WaitRoom wr = new WaitRoom(client);
-            wr.Show();
-            client.SendRoomCreate(UsernameTextBox.Text);
-            this.Close();
-
+            if (nameSet == true)
+            {
+                WaitRoom wr = new WaitRoom(client);
+                wr.Show();
+                client.SendRoomCreate(UsernameTextBox.Text);
+                this.Close();
+            } else
+            {
+                UsernameTextBox.Text = "Set Name First";
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.nameSet = true;
             client.SendConnect(UsernameTextBox.Text);
         }
     }

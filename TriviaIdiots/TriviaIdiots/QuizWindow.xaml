@@ -15,12 +15,12 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Label x:Name="TimeLabel" Content="TIJD&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Height="33" Width="40" Foreground="White" RenderTransformOrigin="0.592,1.576"/>
-        <Label x:Name="RoomCodeLabel" Content="ROOMCODE&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,0.903" Foreground="White"/>
-        <Label x:Name="ScoreLabel" Content="Score&#xD;&#xA;" HorizontalAlignment="Left" Height="33" Margin="731,90,0,0" VerticalAlignment="Top" Width="51" Foreground="White"/>
-        <Button x:Name="AnswerButtonLeftUp" Content="Answer 1&#xD;&#xA;" HorizontalAlignment="Left" Height="67" Margin="92,233,0,0" VerticalAlignment="Top" Width="296" Click="Button_Click"/>
-        <Button x:Name="AnswerButtonRightDown" Content="Answer 4&#xD;&#xA;" HorizontalAlignment="Left" Height="67" Margin="418,327,0,0" VerticalAlignment="Top" Width="296"/>
+        <Label x:Name="RoomCodeLabel" Content="ROOMCODE&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,0.903" Foreground="White" Width="80"/>
+        <Label x:Name="ScoreLabel" Content="Score&#xD;&#xA;" HorizontalAlignment="Left" Height="33" Margin="714,90,0,0" VerticalAlignment="Top" Width="68" Foreground="White"/>
+        <Button x:Name="AnswerButtonLeftUp" Content="Answer 1&#xD;&#xA;" HorizontalAlignment="Left" Height="67" Margin="92,233,0,0" VerticalAlignment="Top" Width="296" Click="LeftTopButton_Click"/>
+        <Button x:Name="AnswerButtonRightDown" Content="Answer 4&#xD;&#xA;" HorizontalAlignment="Left" Height="67" Margin="418,327,0,0" VerticalAlignment="Top" Width="296" Click="AnswerButtonRightDown_Click"/>
         <Button x:Name="AnswerButtonLeftDown" Content="Answer 3&#xD;&#xA;" HorizontalAlignment="Left" Height="67" Margin="92,327,0,0" VerticalAlignment="Top" Width="296" Click="Button_Click_1"/>
-        <Button x:Name="AnswerButtonRightUp" Content="Answer 2&#xD;&#xA;" HorizontalAlignment="Left" Height="67" Margin="418,233,0,0" VerticalAlignment="Top" Width="296"/>
+        <Button x:Name="AnswerButtonRightUp" Content="Answer 2&#xD;&#xA;" HorizontalAlignment="Left" Height="67" Margin="418,233,0,0" VerticalAlignment="Top" Width="296" Click="AnswerButtonRightUp_Click"/>
         <Button x:Name="LeaveButton" Content="Leave" HorizontalAlignment="Left" Margin="744,21,0,0" VerticalAlignment="Top" Width="36" Height="32" Click="LeaveButton_Click"/>
         <TextBlock x:Name="VraagLabel" HorizontalAlignment="Left" Margin="92,41,0,0" TextWrapping="Wrap" Text="Vraag" Foreground="White" FontSize="24" VerticalAlignment="Top" Height="114" Width="622" FontStyle="Italic"/>
     </Grid>

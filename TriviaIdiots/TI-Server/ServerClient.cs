@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using System.Text;
 using TI_Server.Communication;
@@ -38,6 +39,11 @@ namespace TI_Server
             {
                 string packet = totalBuffer.Substring(0, totalBuffer.IndexOf("~_~"));
                 totalBuffer = totalBuffer.Substring(totalBuffer.IndexOf("~_~") + 3);
+
+                StreamWriter writer = new StreamWriter(@".\ServerLog.txt", true);
+                writer.Write("check");
+                writer.WriteLine($"{DateTime.Now.ToString("s")} - {packet}");
+                writer.Close();
 
                 this.receiver.handlePackage(packet);
             }

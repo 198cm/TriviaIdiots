@@ -15,15 +15,16 @@ using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using TI_Server;
 using TriviaIdiots;
+using System.Net;
 
 namespace TI_Server.Communication
 {
     class ClientReceiver : IReceiver
     {
-        
-        public ClientReceiver()
+        public Client client;
+        public ClientReceiver(Client client)
         {
-            
+            this.client = client;
         }
         public void handlePackage(string message)
         {
@@ -33,11 +34,12 @@ namespace TI_Server.Communication
             switch (data[0])
             {
                 case "Question":
-                    Window1.quizw.VraagContent = data[2];
-                    Window1.quizw.AnswerLeftDown = data[3];
-                    Window1.quizw.AnswerLeftUp = data[4];
-                    Window1.quizw.AnswerRightDown = data[5];
-                    Window1.quizw.AnswerRightUp = data[6];
+
+                    Window1.quizw.VraagContent = WebUtility.HtmlDecode(data[2]);
+                    Window1.quizw.AnswerLeftDown = WebUtility.HtmlDecode(data[3]);
+                    Window1.quizw.AnswerLeftUp = WebUtility.HtmlDecode(data[4]);
+                    Window1.quizw.AnswerRightDown = WebUtility.HtmlDecode(data[5]);
+                    Window1.quizw.AnswerRightUp = WebUtility.HtmlDecode(data[6]);
 
                     break;
                 case "PlayerJoin":
@@ -47,8 +49,15 @@ namespace TI_Server.Communication
                     //cr.playerNames.Remove((string) data[1]);
 
                     break;
-                case "AnswerCheck":
-
+                case "ConnectionSuccesfull":
+                    JoinWindow.joinw.joined = true;
+                    break;
+                case "Answer":
+                    if(data[1] == "True")
+                    {
+                        Window1.quizw.score++;
+                    }
+                    client.SendQuestionRequest(Window1.quizw.roomcode);
                     break;
                 case "Roomcode":
                     WaitRoom.waitr.roomcode = data[1];

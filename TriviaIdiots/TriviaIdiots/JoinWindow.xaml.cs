@@ -20,10 +20,12 @@ namespace TriviaIdiots
     public partial class JoinWindow : Window
     {
         public Client client;
-        bool joined = true;
+        public bool joined = false;
+        internal static JoinWindow joinw;
         public JoinWindow(Client client)
         {
             this.client = client;
+            joinw = this;
             InitializeComponent();
         }
 
@@ -41,10 +43,11 @@ namespace TriviaIdiots
 
         private void JoinButton_Click(object sender, RoutedEventArgs e)
         {
-
+            client.SendRoomConnect(RoomCodeTextBox.Text);
             if (joined)
             {
                 WaitRoom wr = new WaitRoom(client);
+                wr.roomcode = RoomCodeTextBox.Text;
                 wr.Show();
                 this.Close();
             }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace TI_Server
 {
@@ -23,14 +24,14 @@ namespace TI_Server
         public async Task<QuestionPack> getQuestionsAsync(int amount)
         {
             var response = await client.GetStringAsync($"https://opentdb.com/api.php?amount={amount}&type=multiple");
-            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(response);
+            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(WebUtility.HtmlDecode(response));
             return apiResponse.GetQuestionPack();
         }
 
         public async Task<Question> getQuestion()
         {
             var response = await client.GetStringAsync("https://opentdb.com/api.php?amount=1&type=multiple");
-            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(response);
+            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(WebUtility.HtmlDecode(response));
             return apiResponse.GetQuestion();
         }
 
