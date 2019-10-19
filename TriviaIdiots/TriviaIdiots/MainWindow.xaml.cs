@@ -42,7 +42,9 @@ namespace TriviaIdiots
 
         private void JoinButton_Click(object sender, RoutedEventArgs e)
         {
-
+            JoinWindow jw = new JoinWindow();
+            jw.Show();
+            this.Close();
         }
 
         private void LogoLabel_Loaded(object sender, RoutedEventArgs e)
@@ -83,6 +85,13 @@ namespace TriviaIdiots
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            WaitRoom wr = new WaitRoom();
+            wr.Show();
+            this.Close();
         }
     }
 }

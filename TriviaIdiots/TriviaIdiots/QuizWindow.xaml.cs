@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TriviaIdiots
 {
@@ -31,8 +32,17 @@ namespace TriviaIdiots
         {
             InitializeComponent();
             quizw = this;
-            QuestionContentUpdate();
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
 
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            QuestionContentUpdate();
+            CommandManager.InvalidateRequerySuggested();
         }
 
         public void ChangeQuestionContent(string question)

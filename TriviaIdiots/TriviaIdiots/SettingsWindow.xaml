@@ -19,7 +19,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Button x:Name="NameChangeButton" Content="Change your Name&#xD;&#xA;" HorizontalAlignment="Left" Height="60" Margin="32,117,0,0" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
-        <Button x:Name="CreditsButton" Content="Credits" HorizontalAlignment="Left" Height="60" Margin="32,201,0,0" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
+        <Button x:Name="CreditsButton" Content="Credits" HorizontalAlignment="Left" Height="60" Margin="32,201,0,0" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2" Click="CreditsButton_Click"/>
         <Button x:Name="HelpButton" Content="Help" HorizontalAlignment="Left" Height="60" Margin="32,283,0,0" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2" Click="HelpButton_Click"/>
         <Button Content="Back" HorizontalAlignment="Left" Height="31" Margin="51.389,364,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click" Grid.Column="1"/>
         <Label Content="Settings" HorizontalAlignment="Center" Height="43" Margin="51.389,43,97,0" VerticalAlignment="Top" Width="100" Foreground="White" FontSize="22" Grid.Column="1"/>

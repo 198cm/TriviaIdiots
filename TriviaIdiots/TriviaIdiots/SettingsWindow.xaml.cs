@@ -42,5 +42,12 @@ namespace TriviaIdiots
             iw.Show();
             this.Close();
         }
+
+        private void CreditsButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreditWindow cw = new CreditWindow();
+            cw.Show();
+            this.Close();
+        }
     }
 }
