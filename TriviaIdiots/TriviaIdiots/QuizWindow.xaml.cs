@@ -33,6 +33,12 @@ namespace TriviaIdiots
 
         }
 
+        public void ChangeQuestionContent(string question)
+        {
+            VraagContent = question;
+        }
+
+
         public void ChangeAnswerContent(AnswerSpot spot, string text)
         {
             switch (spot)
