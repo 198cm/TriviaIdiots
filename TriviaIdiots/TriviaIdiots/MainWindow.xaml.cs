@@ -22,11 +22,13 @@ namespace TriviaIdiots
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        public Client client;
+
         public MainWindow()
         {
             InitializeComponent();
-            Client client = new Client();
+                client = new Client();
+
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
@@ -42,7 +44,7 @@ namespace TriviaIdiots
 
         private void JoinButton_Click(object sender, RoutedEventArgs e)
         {
-            JoinWindow jw = new JoinWindow();
+            JoinWindow jw = new JoinWindow(client);
             jw.Show();
             this.Close();
         }
@@ -89,9 +91,11 @@ namespace TriviaIdiots
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            WaitRoom wr = new WaitRoom();
+            WaitRoom wr = new WaitRoom(client);
             wr.Show();
+            client.SendRoomCreate(UsernameTextBox.Text);
             this.Close();
+
         }
     }
 }

@@ -26,10 +26,12 @@ namespace TriviaIdiots
         internal string AnswerRightUp { get; set; } = "-";
         internal string AnswerRightDown { get; set; } = "-";
         internal static Window1 quizw;
+        public Client client;
 
 
-        public Window1()
+        public Window1(Client client)
         {
+            this.client = client;
             InitializeComponent();
             quizw = this;
             DispatcherTimer dispatcherTimer = new DispatcherTimer();

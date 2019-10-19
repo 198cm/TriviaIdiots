@@ -29,6 +29,7 @@ namespace TI_Server.Communication
         {
             string[] data = Regex.Split(message, "``");
 
+            Console.WriteLine(message);
             switch (data[0])
             {
                 case "Question":
@@ -50,7 +51,7 @@ namespace TI_Server.Communication
 
                     break;
                 case "Roomcode":
-                    //cr.roomcode = (string)data[1];
+                    WaitRoom.roomcode = data[1];
                     break;
                 case "Start":
                     WaitRoom.waitr.readyGame();

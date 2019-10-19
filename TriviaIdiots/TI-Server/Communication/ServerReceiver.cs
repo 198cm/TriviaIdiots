@@ -54,7 +54,14 @@ namespace TI_Server.Communication
                     Server.sendRoomNamesToClients();
                     break;
                 case "RoomCreate":
-                    this.client.CreateRoom();
+                    string playerName = data[1];
+
+                    if (this.Server.PlayerExists(playerName))
+                    {
+                        Player player1 = this.Server.GetPlayer(playerName);
+                        this.client.CreateRoom(player1);
+                    }
+
                     Server.sendRoomNamesToClients();
                     break;
                 case "RoomStart":

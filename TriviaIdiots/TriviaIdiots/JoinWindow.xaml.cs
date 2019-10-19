@@ -19,9 +19,11 @@ namespace TriviaIdiots
     /// </summary>
     public partial class JoinWindow : Window
     {
+        public Client client;
         bool joined = true;
-        public JoinWindow()
+        public JoinWindow(Client client)
         {
+            this.client = client;
             InitializeComponent();
         }
 
@@ -42,7 +44,7 @@ namespace TriviaIdiots
 
             if (joined)
             {
-                WaitRoom wr = new WaitRoom();
+                WaitRoom wr = new WaitRoom(client);
                 wr.Show();
                 this.Close();
             }

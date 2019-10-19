@@ -51,6 +51,11 @@ namespace TI_Server
             this.rooms.Add(room);
         }
 
+        public void AddQuestion(Question q1)
+        {
+            this.questions.Add(q1);
+        }
+
         public void sendRoomNamesToClients()
         {
             string message = "Rooms``";
@@ -81,6 +86,7 @@ namespace TI_Server
             }
             return false;
         }
+
         public ServerRoom GetRoom(string roomName)
         {
             foreach(ServerRoom room in rooms)
@@ -91,11 +97,6 @@ namespace TI_Server
                 }
             }
             return null;
-        }
-
-        public void AddQuestion(Question q1)
-        {
-            this.questions.Add(q1);
         }
 
         public bool QuestionExists(string question)
@@ -117,6 +118,30 @@ namespace TI_Server
                 if (q1.question == question)
                 {
                     return q1;
+                }
+            }
+            return null;
+        }
+
+        public bool PlayerExists(string playerName)
+        {
+            foreach(Player player1 in players)
+            {
+                if(player1.name == playerName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public Player GetPlayer(string playerName)
+        {
+            foreach (Player player1 in players)
+            {
+                if (player1.name == playerName)
+                {
+                    return player1;
                 }
             }
             return null;

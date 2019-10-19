@@ -18,6 +18,6 @@
         <ListBox x:Name="PlayerListBox" HorizontalAlignment="Left" Height="234" Margin="44,114,0,0" VerticalAlignment="Top" Width="202"/>
         <Button x:Name="LeaveButton" Content="Leave" HorizontalAlignment="Left" Height="21" Margin="30,374,0,0" VerticalAlignment="Top" Width="92" Click="LeaveButton_Click"/>
         <Button x:Name="ReadyButton" Content="Ready" HorizontalAlignment="Left" Height="21" Margin="154,374,0,0" VerticalAlignment="Top" Width="92" Click="ReadyButton_Click"/>
-        <Label x:Name="RoomCodeLabel" Content="Label" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="90,82,0,0" VerticalAlignment="Top" Width="104" Foreground="White"/>
+        <Label x:Name="RoomCodeLabel" Content="Roomcode" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="90,82,0,0" VerticalAlignment="Top" Width="104" Foreground="White"/>
     </Grid>
 </Window>

@@ -54,9 +54,10 @@ namespace TI_Server
         public void ReceiverPlayer(Player player)
         {
             this.player = player;
+            this.server.addPlayer(player);
         }
 
-        public void CreateRoom()
+        public void CreateRoom(Player player)
         {
             string possibleRoomCode = GameHelpCommands.RoomCodeGenerate();
             bool codeIsPossible = false;
@@ -69,6 +70,7 @@ namespace TI_Server
                 codeIsPossible = true;
             }
             ServerRoom room = new ServerRoom(possibleRoomCode);
+            Write($"Roomcode``{possibleRoomCode}~_~");
             this.server.addRoom(room);
             room.AddPlayer(this.player);
         }

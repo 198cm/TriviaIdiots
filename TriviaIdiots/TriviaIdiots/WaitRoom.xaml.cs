@@ -21,11 +21,15 @@ namespace TriviaIdiots
     public partial class WaitRoom : Window
     {
         internal static WaitRoom waitr;
-        public WaitRoom()
+        internal static string roomcode;
+        public Client client;
+        public WaitRoom(Client client)
         {
+            this.client = client;
             ClientRoom cr = new ClientRoom();
             InitializeComponent();
             waitr = this;
+            RoomCodeLabel.Content = roomcode;
         }
 
         private void LeaveButton_Click(object sender, RoutedEventArgs e)
@@ -37,15 +41,16 @@ namespace TriviaIdiots
 
         private void ReadyButton_Click(object sender, RoutedEventArgs e)
         {
-            Window1 qw = new Window1();
+            Window1 qw = new Window1(client);
             qw.Show();
             this.Close();
         }
 
         public void readyGame()
-        {
-            Window1 qw = new Window1();
+        {            
+            Window1 qw = new Window1(client);
             qw.Show();
+            client.SendRoomStart(roomcode);
             this.Close();
         }
     }

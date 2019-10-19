@@ -8,7 +8,7 @@ using TI_Server.Communication;
 
 namespace TriviaIdiots
 {
-    class Client
+    public class Client
     {
         private static NetworkStream stream;
         private static byte[] buffer = new byte[1024];
@@ -89,9 +89,10 @@ namespace TriviaIdiots
             WriteMessageInProtocol("RoomShow", atr);
         }
 
-        public void SendRoomCreate()
+        public void SendRoomCreate(string playerName)
         {
-            string[] atr = new string[0];
+            string[] atr = new string[1];
+            atr[0] = playerName;
             WriteMessageInProtocol("RoomCreate", atr);
         }
 
