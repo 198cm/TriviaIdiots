@@ -24,6 +24,7 @@ namespace TriviaIdiots
         internal static WaitRoom waitr;
         internal string roomcode;
         public Client client;
+        bool started = false;
         public WaitRoom(Client client)
         {
             this.client = client;
@@ -54,15 +55,28 @@ namespace TriviaIdiots
 
         private void ReadyButton_Click(object sender, RoutedEventArgs e)
         {
-            readyGame();
+            started = true;
+            Application.Current.Dispatcher.Invoke((Action)delegate {
+                Window1 qw = new Window1(client);
+                qw.Show();
+                client.SendRoomStart(roomcode);
+                this.Close();
+            });
         }
 
         public void readyGame()
-        {            
-            Window1 qw = new Window1(client);
-            qw.Show();
-            client.SendRoomStart(roomcode);
-            this.Close();
+        {
+            if (!started)
+            {
+                started = true;
+                Application.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    Window1 qw = new Window1(client);
+                    qw.Show();
+                    client.SendRoomStart(roomcode);
+                    this.Close();
+                });
+            }
         }
 
     }
